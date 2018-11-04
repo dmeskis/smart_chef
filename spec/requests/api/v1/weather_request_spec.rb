@@ -8,10 +8,7 @@ describe 'Weather API' do
     expect(response).to be_successful
 
     weather_data = JSON.parse(response.body)
-    binding.pry
-    expect(weather_data["current_temperature"]).to exist
-    expect(weather_data["high_temp"]).to exist
-    expect(weather_data["low_temp"]).to exist
+    expect(weather_data.keys).to contain_exactly('current_temperature', 'high_temp', 'low_temp')
   end
 end
 
