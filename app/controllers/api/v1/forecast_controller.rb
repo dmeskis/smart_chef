@@ -24,7 +24,11 @@ class Api::V1::ForecastController < ApplicationController
     temp = parsed_response["currently"]["temperature"]
     high_temp = parsed_response["daily"]["data"][0]["temperatureHigh"]
     low_temp = parsed_response["daily"]["data"][0]["temperatureLow"]
-    binding.pry
+    render json: {
+      "current_temperature" => temp,
+      "high_temp" => high_temp,
+      "low_temp" => low_temp
+    }
     # /maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY"
   end
 end
