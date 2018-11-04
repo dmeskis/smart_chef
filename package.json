@@ -1,5 +1,5 @@
 {
-  "name": "smartchef",
+  "name": "sweatherweather",
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5"
