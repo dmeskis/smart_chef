@@ -12,5 +12,6 @@ describe Forecast, type: :model do
     it {should validate_presence_of(:uv_index)}
     it {should validate_presence_of(:day_description)}
     it {should validate_presence_of(:night_description)}
+    it {should validate_presence_of(:weekly_forecast)}
   end
 end

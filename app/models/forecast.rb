@@ -9,7 +9,8 @@ class Forecast
                         :visibility,
                         :uv_index,
                         :day_description,
-                        :night_description
+                        :night_description,
+                        :weekly_forecast
 
   attr_accessor :current_temperature,
                 :high_temperature,
@@ -20,7 +21,8 @@ class Forecast
                 :visibility,
                 :uv_index,
                 :day_description,
-                :night_description
+                :night_description,
+                :weekly_forecast
 
   def initialize(filter = {})
     @current_temperature  = filter[:current_temperature]
@@ -33,6 +35,7 @@ class Forecast
     @uv_index             = filter[:uv_index]
     @day_description      = filter[:day_description]
     @night_description    = filter[:night_description]
+    @weekly_forecast      = filter[:weekly_forecast]
   end
 
 end
