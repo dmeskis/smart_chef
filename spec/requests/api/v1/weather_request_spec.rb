@@ -9,8 +9,8 @@ describe 'Weather API' do
 
     weather_data = JSON.parse(response.body)
     expect(weather_data.keys).to contain_exactly('current_temperature',
-                                                 'high_temp',
-                                                 'low_temp',
+                                                 'high_temperature',
+                                                 'low_temperature',
                                                  'current_description',
                                                  'feels_like',
                                                  'humidity',
