@@ -20,6 +20,7 @@ describe 'Weather API' do
                                                  'night_description',
                                                  'weekly_forecast'
                                                  )
+    expect(weather_data["weekly_forecast"].count).to eq(8)
   end
 end
 
