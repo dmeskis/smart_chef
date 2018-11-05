@@ -8,6 +8,6 @@ describe DarkskyService do
     service = DarkskyService.new(coordinates)
     data = service.weather_data
     expect(data["latitude"]).to eq(coordinates[:lat])
-    expect(data["longitude"]).to eq(coordinates[:longitude])
+    expect(data["longitude"]).to eq(coordinates[:lng])
   end
 end
