@@ -1,14 +1,26 @@
 class Forecast
-  attr_reader :current_temperature,
-              :high_temperature,
-              :low_temperature,
-              :current_description,
-              :feels_like,
-              :humidity,
-              :visibility,
-              :uv_index,
-              :day_description,
-              :night_description
+  include ActiveModel::Validations
+  validates_presence_of :current_temperature,
+                        :high_temperature,
+                        :low_temperature,
+                        :current_description,
+                        :feels_like,
+                        :humidity,
+                        :visibility,
+                        :uv_index,
+                        :day_description,
+                        :night_description
+
+  attr_accessor :current_temperature,
+                :high_temperature,
+                :low_temperature,
+                :current_description,
+                :feels_like,
+                :humidity,
+                :visibility,
+                :uv_index,
+                :day_description,
+                :night_description
 
   def initialize(filter = {})
     @current_temperature  = filter[:current_temperature]
