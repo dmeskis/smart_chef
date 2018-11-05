@@ -4,8 +4,8 @@ class DarkskyService
     @filter = filter
   end
 
-  def weather_data
-    @weather_data ||= get_json("/forecast/#{ENV["DARKSKY_API_KEY"]}/#{lat},#{lng}")
+  def weather_data(coordinates = {})
+    @weather_data ||= get_json("/forecast/#{ENV["DARKSKY_API_KEY"]}/#{coordinates[:lat]},#{coordinates[:lng]}")
   end
 
   private
