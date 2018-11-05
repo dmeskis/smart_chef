@@ -15,6 +15,7 @@ class Api::V1::ForecastController < ApplicationController
     uv_index = weather_data["currently"]["uvIndex"]
     day_description = weather_data["hourly"]["summary"]
     night_description = weather_data["daily"]["summary"]
+    weekly_forecast = weather_data["daily"]["data"]
     render json: {
       "current_temperature" => temp,
       "high_temp" => high_temp,
@@ -25,8 +26,8 @@ class Api::V1::ForecastController < ApplicationController
       "visibility" => visibility,
       "uv_index" => uv_index,
       "day_description" => day_description,
-      "night_description" => night_description
+      "night_description" => night_description,
+      "weekly_forecast" => weekly_forecast
     }
-    # /maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY"
   end
 end
