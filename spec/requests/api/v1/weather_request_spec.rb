@@ -8,7 +8,6 @@ describe 'Weather API' do
     expect(response).to be_successful
 
     weather_data = JSON.parse(response.body)
-    binding.pry
     expect(weather_data.keys).to contain_exactly('data')
     expect(weather_data["data"].keys).to contain_exactly('id',
                                                          'type',
