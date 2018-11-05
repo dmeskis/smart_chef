@@ -15,7 +15,6 @@ class Api::V1::ForecastController < ApplicationController
     uv_index = weather_data["currently"]["uvIndex"]
     day_description = weather_data["hourly"]["summary"]
     night_description = weather_data["daily"]["summary"]
-    binding.pry
     render json: {
       "current_temperature" => temp,
       "high_temp" => high_temp,
