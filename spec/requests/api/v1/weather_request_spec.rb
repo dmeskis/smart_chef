@@ -17,10 +17,25 @@ describe 'Weather API' do
                                                  'visibility',
                                                  'uv_index',
                                                  'day_description',
-                                                 'night_description'
+                                                 'night_description',
+                                                 'weekly_forecast'
                                                  )
   end
 end
+
+# As a user,
+# when i sent a get request to the below endpoint,
+# I should get a forecast for the week,
+# including a range of temperatures for the day by the hour,
+# a breakdown of the next 5-7 days including the following for each day:
+# condition (e.g. sunny, party cloudy, etc),
+# humidity (in percent),
+# a high temperature (degrees),
+# a low temp (degrees)
+#
+# GET /api/v1/forecast?location=denver,co
+# Content-Type: application/json
+# Accept: application/json
 
 # As a user,
 # when I send a get request to the below endpoint,
