@@ -24,18 +24,18 @@ class Forecast
                 :night_description,
                 :weekly_forecast
 
-  def initialize(filter = {})
-    @current_temperature  = filter[:current_temperature]
-    @high_temperature     = filter[:high_temperature]
-    @low_temperature      = filter[:low_temperature]
-    @current_description  = filter[:current_description]
-    @feels_like           = filter[:feels_like]
-    @humidity             = filter[:humidity]
-    @visibility           = filter[:visibility]
-    @uv_index             = filter[:uv_index]
-    @day_description      = filter[:day_description]
-    @night_description    = filter[:night_description]
-    @weekly_forecast      = filter[:weekly_forecast]
+  def initialize(forecast_data = {})
+    @current_temperature  = forecast_data[:currently][:temperature]
+    @high_temperature     = forecast_data[:daily][:data][0][:temperatureHigh]
+    @low_temperature      = forecast_data[:daily][:data][0][:temperatureLow]
+    @current_description  = forecast_data[:currently][:summary]
+    @feels_like           = forecast_data[:currently][:apparentTemperature]
+    @humidity             = forecast_data[:currently][:humidity]
+    @visibility           = forecast_data[:currently][:visibility]
+    @uv_index             = forecast_data[:currently][:uvIndex]
+    @day_description      = forecast_data[:hourly][:summary]
+    @night_description    = forecast_data[:daily][:summary]
+    @weekly_forecast      = forecast_data[:daily][:data]
   end
 
 end

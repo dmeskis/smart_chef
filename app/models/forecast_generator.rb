@@ -4,8 +4,12 @@ class ForecastGenerator
     @location = filter[:location]
   end
 
-  def create_forecast
-    darksky_service.weather_data(coordinates)
+  def fetch_forecast_data
+    @data = darksky_service.weather_data(coordinates)
+  end
+
+  def generate
+    Forecast.new(fetch_forecast_data)
   end
 
   private
