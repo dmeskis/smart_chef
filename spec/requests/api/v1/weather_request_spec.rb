@@ -8,7 +8,13 @@ describe 'Weather API' do
     expect(response).to be_successful
 
     weather_data = JSON.parse(response.body)
-    expect(weather_data.keys).to contain_exactly('current_temperature',
+    expect(weather_data.keys).to contain_exactly('data')
+    expect(weather_data["data"].keys).to contain_exactly('id',
+                                                         'type',
+                                                         'attributes'
+                                                        )
+    expect(weather_data["data"]["attributes"].keys).to contain_exactly(
+                                                 'current_temperature',
                                                  'high_temperature',
                                                  'low_temperature',
                                                  'current_description',
@@ -20,7 +26,6 @@ describe 'Weather API' do
                                                  'night_description',
                                                  'weekly_forecast'
                                                  )
-    expect(weather_data["weekly_forecast"].count).to eq(8)
   end
 end
 

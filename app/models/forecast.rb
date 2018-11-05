@@ -12,7 +12,8 @@ class Forecast
                         :night_description,
                         :weekly_forecast
 
-  attr_accessor :current_temperature,
+  attr_accessor :time,
+                :current_temperature,
                 :high_temperature,
                 :low_temperature,
                 :current_description,
@@ -25,6 +26,7 @@ class Forecast
                 :weekly_forecast
 
   def initialize(forecast_data = {})
+    @time                 = forecast_data[:currently][:time]
     @current_temperature  = forecast_data[:currently][:temperature]
     @high_temperature     = forecast_data[:daily][:data][0][:temperatureHigh]
     @low_temperature      = forecast_data[:daily][:data][0][:temperatureLow]

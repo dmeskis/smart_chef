@@ -1,7 +1,8 @@
 class Api::V1::ForecastController < ApplicationController
   def index
     forecast = ForecastGenerator.new(forecast_params).generate
-    render json: forecast
+    serialized = ForecastSerializer.new(forecast).serialized_json
+    render json: serialized
   end
 
   private
