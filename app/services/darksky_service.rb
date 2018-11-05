@@ -5,7 +5,7 @@ class DarkskyService
   end
 
   def weather_data
-    @weather_data ||= JSON.parse(conn.get("/forecast/#{ENV["DARKSKY_API_KEY"]}/#{lat},#{lng}").body)
+    @weather_data ||= get_json("/forecast/#{ENV["DARKSKY_API_KEY"]}/#{lat},#{lng}")
   end
 
   private
@@ -16,6 +16,10 @@ class DarkskyService
         f.headers['Accept'] = 'application/json'
         f.adapter Faraday.default_adapter
       end
+    end
+
+    def get_json(url)
+      JSON.parse(conn.get(url).body, symbolize_names: true)
     end
 
     def lat

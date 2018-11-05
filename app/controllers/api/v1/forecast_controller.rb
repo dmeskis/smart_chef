@@ -5,18 +5,18 @@ class Api::V1::ForecastController < ApplicationController
 
     darksky_service = DarkskyService.new(coordinates)
     weather_data = darksky_service.weather_data
-    temp = weather_data["currently"]["temperature"]
-    high_temp = weather_data["daily"]["data"][0]["temperatureHigh"]
-    low_temp = weather_data["daily"]["data"][0]["temperatureLow"]
-    current_description = weather_data["currently"]["summary"]
-    feels_like = weather_data["currently"]["apparentTemperature"]
-    humidity = weather_data["currently"]["humidity"]
-    visibility = weather_data["currently"]["visibility"]
-    uv_index = weather_data["currently"]["uvIndex"]
-    day_description = weather_data["hourly"]["summary"]
-    night_description = weather_data["daily"]["summary"]
-    weekly_forecast = weather_data["daily"]["data"]
-    
+    temp = weather_data[:currently][:temperature]
+    high_temp = weather_data[:daily][:data][0][:temperatureHigh]
+    low_temp = weather_data[:daily][:data][0][:temperatureLow]
+    current_description = weather_data[:currently][:summary]
+    feels_like = weather_data[:currently][:apparentTemperature]
+    humidity = weather_data[:currently][:humidity]
+    visibility = weather_data[:currently][:visibility]
+    uv_index = weather_data[:currently][:uvIndex]
+    day_description = weather_data[:hourly][:summary]
+    night_description = weather_data[:daily][:summary]
+    weekly_forecast = weather_data[:daily][:data]
+
     render json: {
       "current_temperature" => temp,
       "high_temp" => high_temp,

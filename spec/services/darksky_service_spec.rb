@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe DarkskyService do
   it 'grabs weather data when given a latitude and longitude' do
@@ -7,7 +7,7 @@ describe DarkskyService do
 
     service = DarkskyService.new(coordinates)
     data = service.weather_data
-    expect(data["latitude"]).to eq(coordinates[:lat])
-    expect(data["longitude"]).to eq(coordinates[:lng])
+    expect(data[:latitude]).to eq(coordinates[:lat])
+    expect(data[:longitude]).to eq(coordinates[:lng])
   end
 end
