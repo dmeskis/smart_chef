@@ -8,19 +8,41 @@ describe 'Weather API' do
     expect(response).to be_successful
 
     weather_data = JSON.parse(response.body)
-    expect(weather_data.keys).to contain_exactly('current_temperature',
-                                                 'high_temp',
-                                                 'low_temp',
+    binding.pry
+    expect(weather_data.keys).to contain_exactly('data')
+    expect(weather_data["data"].keys).to contain_exactly('id',
+                                                         'type',
+                                                         'attributes'
+                                                        )
+    expect(weather_data["data"]["attributes"].keys).to contain_exactly(
+                                                 'current_temperature',
+                                                 'high_temperature',
+                                                 'low_temperature',
                                                  'current_description',
                                                  'feels_like',
                                                  'humidity',
                                                  'visibility',
                                                  'uv_index',
                                                  'day_description',
-                                                 'night_description'
+                                                 'night_description',
+                                                 'weekly_forecast'
                                                  )
   end
 end
+
+# As a user,
+# when i sent a get request to the below endpoint,
+# I should get a forecast for the week,
+# including a range of temperatures for the day by the hour,
+# a breakdown of the next 5-7 days including the following for each day:
+# condition (e.g. sunny, party cloudy, etc),
+# humidity (in percent),
+# a high temperature (degrees),
+# a low temp (degrees)
+#
+# GET /api/v1/forecast?location=denver,co
+# Content-Type: application/json
+# Accept: application/json
 
 # As a user,
 # when I send a get request to the below endpoint,

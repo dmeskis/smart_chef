@@ -1,10 +1,8 @@
 class Api::V1::ForecastController < ApplicationController
   def index
-    binding.pry
     forecast = ForecastGenerator.new(forecast_params).generate
     serialized = ForecastSerializer.new(forecast).serialized_json
-    binding.pry
-    render json: forecast
+    render json: serialized
   end
 
   private
