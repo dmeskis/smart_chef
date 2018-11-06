@@ -18,12 +18,4 @@ class DarkskyService
       JSON.parse(conn.get(url).body, symbolize_names: true)
     end
 
-    def lat
-      @filter[:lat]
-    end
-
-    def lng
-      @filter[:lng]
-    end
-
 end
