@@ -6,7 +6,6 @@ describe 'Background API' do
 
     expect(response).to be_successful
     image_data = JSON.parse(response.body)
-    # binding.pry
   end
 end
 
