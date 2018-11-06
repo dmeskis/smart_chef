@@ -5,7 +5,8 @@ describe 'account creation API' do
     post '/api/v1/users?email=whatever@example.com&password=password&password_confirmation=password'
 
     expect(response).to be_successful
-    expect(response.body.keys).to contain_exactly('api_key')
+    parsed_response = JSON.parse(response.body)
+    expect(parsed_response["data"]["attributes"].keys).to contain_exactly('api_key')
   end
   it 'does not allow a user to create an account with an existing email' do
     user = create(:user)
