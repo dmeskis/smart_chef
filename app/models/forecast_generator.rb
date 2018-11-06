@@ -5,8 +5,7 @@ class ForecastGenerator
   end
 
   def fetch_forecast_data
-    @data = darksky_service.weather_data(coordinates)
-  end
+    @data ||= darksky_service.weather_data(coordinates)
 
   def generate
     Forecast.new(fetch_forecast_data)
