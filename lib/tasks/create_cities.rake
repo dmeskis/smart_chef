@@ -8,11 +8,10 @@ namespace :db do
       cities = File.read('./db/csv/cities.csv')
       csv = CSV.parse(cities, :headers => true)
       google_service = GoogleGeocodingService.new
-      binding.pry
       csv.each do |row|
-        coordinates = GoogleGeocodingService.get_coordinates("#{row.city}, #{row.state}")
-        City.create!(name: row.city,
-                     state: row.state
+        coordinates = google_service.get_coordinates("#{row["city"]}, #{row["state"]}")
+        City.create!(name: row["city"],
+                     state: row["state"]
                    )
 
       end

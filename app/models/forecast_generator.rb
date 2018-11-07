@@ -2,9 +2,12 @@ class ForecastGenerator
 
   def initialize(filter = {})
     @location = filter[:location]
+    parse_location
+    @city = city
   end
 
   def fetch_forecast_data
+    # binding.pry
     @data ||= darksky_service.weather_data(coordinates)
   end
 
@@ -23,6 +26,20 @@ class ForecastGenerator
   end
 
   def coordinates
-    @coordinates ||= google_service.get_coordinates(@location)
+    if city.empty? || city.nil?
+      @coordinates ||= google_service.get_coordinates(@location)
+    else
+      @coordinates ||= city.coordinates
+    end
+  end
+
+  def city
+    City.where('name ILIKE :name AND state ILIKE :state', name: "%#{@name}%", state: "%#{@state}%")
+  end
+
+  def parse_location
+    parsed = @location.gsub(/\W/, ' ').split
+    @name = parsed[0]
+    @state = parsed[1]
   end
 end

@@ -3,6 +3,9 @@ class City < ApplicationRecord
   validates_presence_of :latitude, :longitude, on: :save
   before_create :save_coordinates
 
+  def coordinates
+    {lat: self.latitude, lng: self.longitude}
+  end
 
   private
 
