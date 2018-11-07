@@ -26,7 +26,8 @@ class ForecastGenerator
   end
 
   def coordinates
-    if city.empty? || city.nil?
+    if city.nil?
+      # City.create(name: @name, state: @state)
       @coordinates ||= google_service.get_coordinates(@location)
     else
       @coordinates ||= city.coordinates
@@ -34,7 +35,7 @@ class ForecastGenerator
   end
 
   def city
-    City.where('name ILIKE :name AND state ILIKE :state', name: "%#{@name}%", state: "%#{@state}%")
+    City.find_by('name ILIKE :name AND state ILIKE :state', name: "%#{@name}%", state: "%#{@state}%")
   end
 
   def parse_location

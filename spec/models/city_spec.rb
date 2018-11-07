@@ -14,5 +14,9 @@ RSpec.describe City, type: :model do
       expect(city.coordinates).to eq({lat: 39.7392358,
                                          lng: -104.990251})
     end
+    it 'unabbreviate_state' do
+      city = City.create!(name: "Denver", state: "Co")
+      expect(city.state).to eq("Colorado")
+    end
   end
 end
