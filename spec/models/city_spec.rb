@@ -18,5 +18,9 @@ RSpec.describe City, type: :model do
       city = City.create!(name: "Denver", state: "Co")
       expect(city.state).to eq("Colorado")
     end
+    it 'does not unabbreviate already unabbreviated state' do
+      city = City.create!(name: "Denver", state: "Colorado")
+      expect(city.state).to eq("Colorado")
+    end
   end
 end
