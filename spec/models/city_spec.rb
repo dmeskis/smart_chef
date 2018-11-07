@@ -3,6 +3,9 @@ require 'rails_helper'
 RSpec.describe City, type: :model do
   it { should validate_presence_of :name}
   it { should validate_presence_of :state}
-  it { should validate_presence_of :latitude}
-  it { should validate_presence_of :longitude}
+  it 'should grab the correct coordinates on create' do
+    city = City.create!(name: "Denver", state: "Colorado")
+    expect(city.latitude).to eq(39.7392358)
+    expect(city.longitude).to eq(-104.990251)
+  end
 end

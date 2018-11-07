@@ -1,14 +1,19 @@
 class City < ApplicationRecord
-  validate_presence_of :name, :state
-  before_create :get_coordinates
+  validates_presence_of :name, :state
+  validates_presence_of :latitude, :longitude, on: :save
+  before_create :save_coordinates
 
 
   private
 
-  def get_coordinates
-    service = GoogleGeocodingService.new
-    coordinates = service.get_coordinates("#{self.city}, #{self.state}")
+  def save_coordinates
+    coordinates = google_service.get_coordinates("#{self.name}, #{self.state}")
     self.latitude = coordinates[:lat]
     self.longitude = coordinates[:lng]
   end
+
+  def google_service
+    GoogleGeocodingService.new
+  end
+
 end
