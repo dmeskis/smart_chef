@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Weather API' do
   it 'includes the current temperature and high and low temperature for the day' do
-
+    city = City.create(name: "Denver", state: "CO")
     get "/api/v1/forecast?location=denver,co"
 
     expect(response).to be_successful
