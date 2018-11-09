@@ -10,7 +10,6 @@ class City < ApplicationRecord
   private
 
   def save_coordinates
-    binding.pry
     coordinates = google_service.get_coordinates("#{self.name}, #{self.state}")
     self.latitude = coordinates[:lat]
     self.longitude = coordinates[:lng]

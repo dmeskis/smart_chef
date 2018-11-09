@@ -28,7 +28,6 @@ describe 'Weather API' do
                                                  )
   end
   it 'can find cities with delimiters' do
-    # city = City.create(name: "Wilkes-Barre", state: "PA")
     get "/api/v1/forecast?location=wilkes-barre,pa"
     expect(response).to be_successful
 
