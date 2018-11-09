@@ -3,9 +3,7 @@ class Api::V1::ForecastController < ApplicationController
 
   def index
     @city = City.where('name ILIKE :name AND state ILIKE :state', name: "%#{@name}%", state: "%#{@state}%").first_or_create
-    binding.pry
     forecasts = Forecasts.new(@city).generate
-    # forecast = ForecastGenerator.new(forecast_params).generate
     serialized = ForecastSerializer.new(forecasts).serialized_json
     render json: serialized
   end
