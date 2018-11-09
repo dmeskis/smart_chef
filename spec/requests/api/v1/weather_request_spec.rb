@@ -27,6 +27,11 @@ describe 'Weather API' do
                                                  'weekly_forecast'
                                                  )
   end
+  it 'can find cities with delimiters' do
+    get "/api/v1/forecast?location=wilkes-barre,pa"
+    expect(response).to be_successful
+
+  end
 end
 
 # As a user,
