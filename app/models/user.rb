@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_secure_password
   before_create :create_api_key
   has_many :favorites
-  has_many :cities, through: :favorites
+  has_many :cities, through: :favorites, dependent: :delete_all
 
   private
 
