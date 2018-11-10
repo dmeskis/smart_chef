@@ -13,8 +13,11 @@ class Api::V1::FavoritesController < ApplicationController
   end
 
   def destroy
-    @user.cities.delete(@city)
-    render json: FavoriteSerializer.new(@user.favorites).serialized_json
+    if @user.cities.delete(@city)
+      render json: FavoriteSerializer.new(@user.favorites).serialized_json
+    else
+      render json: {errors: "City not found"}, status: 401
+    end
   end
 
   private
