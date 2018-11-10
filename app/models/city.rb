@@ -2,6 +2,8 @@ class City < ApplicationRecord
   validates_presence_of :name, :state
   validates_presence_of :latitude, :longitude, on: :save
   before_create :save_coordinates, :unabbreviate_state
+  has_many :favorites
+  has_many :users, through: :favorites
 
   def coordinates
     {lat: self.latitude, lng: self.longitude}
