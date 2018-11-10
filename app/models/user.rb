@@ -3,6 +3,8 @@ class User < ApplicationRecord
   validates :password, presence: true
   has_secure_password
   before_create :create_api_key
+  has_many :favorites
+  has_many :cities, through: :favorites
 
   private
 
