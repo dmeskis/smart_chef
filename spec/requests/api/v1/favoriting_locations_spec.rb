@@ -7,6 +7,7 @@ describe 'favoriting locations API' do
     expect(response).to be_successful
     expect(user.cities.count).to eq(1)
     data = JSON.parse(response.body)
+    expect(data["data"][0]["type"]).to eq("favorite")
     expect(data["data"][0]["attributes"].keys).to contain_exactly('id', 'location', 'current_weather')
   end
   it 'does not allow a user to favorite a location with an invalid api key' do
