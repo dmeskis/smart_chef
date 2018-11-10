@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 describe 'favoriting locations API' do
-  xit 'allows user to favorite a location' do
+  it 'allows user to favorite a location' do
     user = create(:user)
     post "/api/v1/favorites?location=Denver,+CO&api_key=#{user.api_key}"
     expect(response).to be_successful
-
+    expect(user.cities.count).to eq(1)
   end
   it 'does not allow a user to favorite a location with an invalid api key' do
     user = create(:user)

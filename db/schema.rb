@@ -24,11 +24,11 @@ ActiveRecord::Schema.define(version: 2018_11_10_000016) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "favorites_tables", force: :cascade do |t|
+  create_table "favorites", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "city_id"
-    t.index ["city_id"], name: "index_favorites_tables_on_city_id"
-    t.index ["user_id"], name: "index_favorites_tables_on_user_id"
+    t.index ["city_id"], name: "index_favorites_on_city_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,6 +39,6 @@ ActiveRecord::Schema.define(version: 2018_11_10_000016) do
     t.string "api_key"
   end
 
-  add_foreign_key "favorites_tables", "cities"
-  add_foreign_key "favorites_tables", "users"
+  add_foreign_key "favorites", "cities"
+  add_foreign_key "favorites", "users"
 end
