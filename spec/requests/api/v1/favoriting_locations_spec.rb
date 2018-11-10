@@ -26,13 +26,3 @@ describe 'favoriting locations API' do
     expect(data["data"][0]["attributes"].keys).to contain_exactly('id', 'location', 'current_weather')
   end
 end
-
-# GET /api/v1/favorites
-# Content-Type: application/json
-# Accept: application/json
-#
-# body:
-#
-# {
-#   "api_key": "jgn983hy48thw9begh98h4539h4"
-# }
