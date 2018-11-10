@@ -30,17 +30,6 @@ describe 'favoriting locations API' do
     user.cities.create(name: "Denver", state: "CO")
     delete "/api/v1/favorites?location=Denver,+CO&api_key=#{user.api_key}"
     expect(response).to be_successful
-    expect(user.cities.count).to eq(1)
+    expect(user.cities.count).to eq(0)
   end
 end
-
-# DELETE /api/v1/favorites
-# Content-Type: application/json
-# Accept: application/json
-#
-# body:
-#
-# {
-#   "location": "Denver, CO", # If you decide to store cities in your database you can send an id if you prefer
-#   "api_key": "jgn983hy48thw9begh98h4539h4"
-# }
