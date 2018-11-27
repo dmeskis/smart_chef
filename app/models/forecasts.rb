@@ -9,7 +9,7 @@ class Forecasts
   end
 
   def generate
-    Forecast.new(fetch_forecast_data)
+    Forecast.new(@city, fetch_forecast_data)
   end
 
   private

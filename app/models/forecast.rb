@@ -12,7 +12,9 @@ class Forecast
                         :night_description,
                         :weekly_forecast
 
-  attr_accessor :time,
+  attr_accessor :city,
+                :state,
+                :time,
                 :current_temperature,
                 :high_temperature,
                 :low_temperature,
@@ -25,7 +27,9 @@ class Forecast
                 :night_description,
                 :weekly_forecast
 
-  def initialize(forecast_data = {})
+  def initialize(city, forecast_data = {})
+    @city                 = city.name
+    @state                = city.state
     @time                 = forecast_data[:currently][:time]
     @current_temperature  = forecast_data[:currently][:temperature]
     @high_temperature     = forecast_data[:daily][:data][0][:temperatureHigh]

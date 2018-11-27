@@ -14,6 +14,8 @@ describe 'Weather API' do
                                                          'attributes'
                                                         )
     expect(weather_data["data"]["attributes"].keys).to contain_exactly(
+                                                 'city',
+                                                 'state',
                                                  'current_temperature',
                                                  'high_temperature',
                                                  'low_temperature',
