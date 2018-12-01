@@ -12,6 +12,7 @@ class ForecastSerializer
              :uv_index,
              :day_description,
              :night_description,
+             :hourly_forecast,
              :weekly_forecast
   set_id :time
 end

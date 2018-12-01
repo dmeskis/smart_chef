@@ -26,6 +26,7 @@ describe 'Weather API' do
                                                  'uv_index',
                                                  'day_description',
                                                  'night_description',
+                                                 'hourly_forecast',
                                                  'weekly_forecast'
                                                  )
   end
