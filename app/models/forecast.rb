@@ -25,6 +25,7 @@ class Forecast
                 :uv_index,
                 :day_description,
                 :night_description,
+                :hourly_forecast,
                 :weekly_forecast
 
   def initialize(city, forecast_data = {})
@@ -41,6 +42,7 @@ class Forecast
     @uv_index             = forecast_data[:currently][:uvIndex]
     @day_description      = forecast_data[:hourly][:summary]
     @night_description    = forecast_data[:daily][:summary]
+    @hourly_forecast      = forecast_data[:hourly][:data]
     @weekly_forecast      = forecast_data[:daily][:data]
   end
 
