@@ -1,7 +1,7 @@
 class FlickrService
 
   def get_background_images(coordinates = {})
-    @background_data ||= get_json(("?method=flickr.photos.search&format=json&api_key=#{ENV['FLICKR_API_KEY']}&lat=#{coordinates[:lat]}&long=#{coordinates[:lon]}&tags=parks&nojsoncallback=1&per_page=25"))
+    @background_data ||= get_json(("?method=flickr.photos.search&format=json&api_key=#{ENV['FLICKR_API_KEY']}&lat=#{coordinates[:lat]}&long=#{coordinates[:lon]}&tags=park,building&nojsoncallback=1&extras=url_o&per_page=25"))
   end
 
   private
