@@ -4,7 +4,9 @@ class GoogleGeocodingService
     data = JSON.parse(get_location_data(address))
     {
       lat: data["results"][0]["geometry"]["location"]["lat"],
-      lng: data["results"][0]["geometry"]["location"]["lng"]
+      lng: data["results"][0]["geometry"]["location"]["lng"],
+      name: data["results"][0]["address_components"][0]["long_name"],
+      state: data["results"][0]["address_components"][2]["long_name"]
     }
   end
 

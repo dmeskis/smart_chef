@@ -15,6 +15,8 @@ class City < ApplicationRecord
     coordinates = google_service.get_coordinates("#{self.name}, #{self.state}")
     self.latitude = coordinates[:lat]
     self.longitude = coordinates[:lng]
+    self.name = coordinates[:name]
+    self.state = coordinates[:state]
   end
 
   def google_service
