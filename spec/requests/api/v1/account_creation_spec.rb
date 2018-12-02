@@ -15,7 +15,6 @@ describe 'account creation API' do
     User.first.delete
 
     post "/api/v1/users?email=#{email}&password=#{password}&password_confirmation=#{password}"
-    binding.pry
     expect(response).to have_http_status(400)
   end
 end
