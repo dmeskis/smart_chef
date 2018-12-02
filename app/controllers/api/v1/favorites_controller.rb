@@ -48,7 +48,7 @@ class Api::V1::FavoritesController < ApplicationController
 
     def parse_location
       parsed = favorites_params[:location].gsub(/(?!-)\W/, ' ').split
-      @name = parsed[0]
-      @state = parsed[1]
+      @name = parsed[0..-2]
+      @state = parsed[-1]
     end
 end

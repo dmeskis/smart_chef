@@ -16,7 +16,7 @@ class Api::V1::ForecastController < ApplicationController
 
     def parse_location
       parsed = forecast_params[:location].gsub(/(?!-)\W/, ' ').split
-      @name = parsed[0]
-      @state = parsed[1]
+      @name = parsed[0..-2]
+      @state = parsed[-1]
     end
 end
