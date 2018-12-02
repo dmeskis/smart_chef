@@ -12,7 +12,6 @@ describe 'account creation API' do
     user = create(:user)
     email = user.email
     password = user.password
-    User.first.delete
 
     post "/api/v1/users?email=#{email}&password=#{password}&password_confirmation=#{password}"
     expect(response).to have_http_status(400)
