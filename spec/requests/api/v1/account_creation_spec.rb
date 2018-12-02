@@ -10,8 +10,12 @@ describe 'account creation API' do
   end
   it 'does not allow a user to create an account with an existing email' do
     user = create(:user)
+    email = user.email
+    password = user.password
+    User.first.delete
 
-    post "/api/v1/users?email=#{user.email}&password=#{user.password}&password_confirmation=#{user.password}"
+    post "/api/v1/users?email=#{email}&password=#{password}&password_confirmation=#{password}"
+    binding.pry
     expect(response).to have_http_status(400)
   end
 end
