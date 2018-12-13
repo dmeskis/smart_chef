@@ -3,6 +3,8 @@ class Api::V1::FavoritesController < ApplicationController
   before_action :parse_location, only: :create
   before_action :find_or_create_location, only: [:create, :destroy]
   before_action :favorite, only: :create
+  skip_before_action :verify_authenticity_token
+
 
   def create
     render json: FavoriteSerializer.new(@user.favorites).serialized_json
@@ -13,7 +15,9 @@ class Api::V1::FavoritesController < ApplicationController
   end
 
   def destroy
-    if @user.cities.delete(@city)
+    favorite = Favorite.find_by(city_id: @city)
+    if @user.favorites.delete(favorite)
+      Favorite.delete(favorite)
       render json: FavoriteSerializer.new(@user.favorites).serialized_json
     else
       render json: {errors: "City not found"}, status: 401
@@ -39,7 +43,7 @@ class Api::V1::FavoritesController < ApplicationController
     end
 
     def find_or_create_location
-      @city ||= City.where('name ILIKE :name AND state ILIKE :state', name: "%#{@name}%", state: "%#{@state}%").first_or_create(name: @name, state: @state)
+      @city ||= City.where('name ILIKE :name AND state ILIKE :state', name: "%#{@name.join(' ') unless @name == nil}%", state: "%#{@state}%").first_or_create(name: @name, state: @state)
     end
 
     def favorite

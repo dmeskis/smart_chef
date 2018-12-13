@@ -2,7 +2,7 @@ class Api::V1::ForecastController < ApplicationController
   before_action :parse_location
 
   def index
-    @city = City.where('name ILIKE :name AND state ILIKE :state', name: "%#{@name}%", state: "%#{@state}%").first_or_create(name: @name, state: @state)
+    @city = City.where('name ILIKE :name AND state ILIKE :state', name: "%#{@name.join(' ')}%", state: "%#{@state}%").first_or_create(name: @name, state: @state)
     forecasts = Forecasts.new(@city).generate
     serialized = ForecastSerializer.new(forecasts).serialized_json
     render json: serialized
